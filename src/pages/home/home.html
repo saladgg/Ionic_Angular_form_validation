@@ -1,0 +1,119 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Form Validation Demo</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <form [formGroup]="formGroup" (ngSubmit)="createData()" class="demoForm">
+    <ion-list class="p">
+
+      <ion-item class="form-group">
+        <ion-label floating>Sender Name</ion-label>
+        <ion-input type="text" [value]="sendername" id="sendername" class="form-control" formControlName="sendername"></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="formGroup.controls.sendername.hasError('required') && formGroup.controls.sendername.touched">
+        <p>Please enter sender's name.</p>
+      </ion-item>
+      <ion-item *ngIf="formGroup.controls.sendername.hasError('pattern') && formGroup.controls.sendername.touched">
+        <p>Sorry, only small and capital letters are allowed.</p>
+      </ion-item>
+      <ion-item *ngIf="formGroup.controls.sendername.hasError('minlength') && formGroup.controls.sendername.touched">
+        <p>Sorry, minimum sendername length is 3.</p>
+      </ion-item>
+      <ion-item *ngIf="formGroup.controls.sendername.hasError('maxlength') && formGroup.controls.sendername.touched">
+        <p>Sorry, maximum sendername length is 25.</p>
+      </ion-item>
+
+      <ion-item class="form-group">
+        <ion-label floating>Sender Phone</ion-label>
+        <ion-input type="tel" [value]="senderphone" id="senderphone" class="form-control" formControlName="senderphone"></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="formGroup.controls.senderphone.hasError('required') && formGroup.controls.senderphone.touched">
+        <p>Please enter sender's phone number</p>
+      </ion-item>
+      <ion-item *ngIf="formGroup.controls.senderphone.hasError('pattern') && formGroup.controls.senderphone.touched">
+        <p>Sorry, only numbers are allowed</p>
+      </ion-item>
+      <ion-item *ngIf="formGroup.controls.senderphone.hasError('minlength') && formGroup.controls.senderphone.touched">
+        <p>Sorry, minimum senderphone length is 10</p>
+      </ion-item>
+      <ion-item *ngIf="formGroup.controls.senderphone.hasError('maxlength') && formGroup.controls.senderphone.touched">
+        <p>Sorry, maximum senderphone length is 12</p>
+      </ion-item>
+
+      <ion-item class="form-group">
+        <ion-label floating>Sender ID Number</ion-label>
+        <ion-input type="text" [value]="senderidentitynumber" id="senderidentitynumber" class="form-control" formControlName="senderidentitynumber"></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="formGroup.controls.senderidentitynumber.hasError('required') && formGroup.controls.senderidentitynumber.touched">
+        <p>Please enter sender's ID number</p>
+      </ion-item>
+      <ion-item *ngIf="formGroup.controls.senderidentitynumber.hasError('pattern') && formGroup.controls.senderidentitynumber.touched">
+        <p>Sorry, only numbers are allowed.</p>
+      </ion-item>
+      <ion-item *ngIf="formGroup.controls.senderidentitynumber.hasError('minlength') && formGroup.controls.senderidentitynumber.touched">
+        <p>Sorry, minimum senderidentitynumber length is 6</p>
+      </ion-item>
+      <ion-item *ngIf="formGroup.controls.senderidentitynumber.hasError('maxlength') && formGroup.controls.senderidentitynumber.touched">
+        <p>Sorry, maximum senderidentitynumber length is 10</p>
+      </ion-item>
+
+      <ion-item class="form-group">
+        <ion-label floating>Receiver Name</ion-label>
+        <ion-input type="text" [value]="receivername" id="receivername" class="form-control" formControlName="receivername"></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="formGroup.controls.receivername.hasError('required') && formGroup.controls.receivername.touched">
+        <p>Please enter receiver's name.</p>
+      </ion-item>
+      <ion-item *ngIf="formGroup.controls.receivername.hasError('pattern') && formGroup.controls.receivername.touched">
+        <p>Sorry, only small and capital letters are allowed.</p>
+      </ion-item>
+      <ion-item *ngIf="formGroup.controls.receivername.hasError('minlength') && formGroup.controls.receivername.touched">
+        <p>Sorry, minimum receivername length is 3.</p>
+      </ion-item>
+      <ion-item *ngIf="formGroup.controls.receivername.hasError('maxlength') && formGroup.controls.receivername.touched">
+        <p>Sorry, maximum receivername length is 25.</p>
+      </ion-item>
+
+
+      <ion-item class="form-group">
+        <ion-label floating>Receiver Phone</ion-label>
+        <ion-input type="tel" [value]="receiverphone" id="receiverphone" class="form-control" formControlName="receiverphone"></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="formGroup.controls.receiverphone.hasError('required') && formGroup.controls.receiverphone.touched">
+        <p>Please enter receiver's phone number</p>
+      </ion-item>
+      <ion-item *ngIf="formGroup.controls.receiverphone.hasError('pattern') && formGroup.controls.receiverphone.touched">
+        <p>Sorry, only numbers are allowed</p>
+      </ion-item>
+      <ion-item *ngIf="formGroup.controls.receiverphone.hasError('minlength') && formGroup.controls.receiverphone.touched">
+        <p>Sorry, minimum receiverphone length is 10</p>
+      </ion-item>
+      <ion-item *ngIf="formGroup.controls.receiverphone.hasError('maxlength') && formGroup.controls.receiverphone.touched">
+        <p>Sorry, maximum receiverphone length is 12</p>
+      </ion-item>
+
+      <ion-item class="form-group">
+        <ion-label>Source</ion-label>
+        <ion-select interface="action-sheet" formControlName="sourceid">
+          <ion-option *ngFor="let source of sources" [value]="source">{{source}}</ion-option>
+        </ion-select>
+      </ion-item>
+
+
+      <ion-item class="form-group">
+        <ion-label>Destination</ion-label>
+        <ion-select interface="action-sheet" formControlName="destinationid">
+          <ion-option *ngFor="let destination of destinations" [value]="destination">{{destination}} </ion-option>
+        </ion-select>
+      </ion-item>
+
+    </ion-list>
+    <button ion-button full large color="secondary" [disabled]="!formGroup.valid" type="submit">Create</button>
+  </form>
+</ion-content>
